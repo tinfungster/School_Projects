@@ -88,6 +88,9 @@ end
 md"# This is how my program helped me to do my art homework. "
 
 # ╔═╡ 00078100-2ea7-11eb-12a0-f740602188b6
+# I sent you the link for the image. Just replace the link below with the link 
+# sent in Outlook. 
+
 load(download("https://attachments.office.net/owa/6200%40tiffin.kingston.sch.uk/service.svc/s/GetAttachmentThumbnail?id=AAMkADNmNzM2YjFiLTgxMGMtNDRmMi1hODU4LTllYWRhMjMwZmQ4YwBGAAAAAACQxg3NrCc6RJ2LB7kVaMdwBwDF76DFm02%2FRp2ygnW7iB7CAAAAAAEMAADF76DFm02%2FRp2ygnW7iB7CAAAx7MhYAAABEgAQAMFXn%2FsYDG5Dmexpmh%2F9j0E%3D&thumbnailType=2&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2MzU4ODUyMzRCOTI1MkRERTAwNTc2NkQ5RDlGMjc2NTY1RjYzRTIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJWaldJVWpTNUpTM2VBRmRtMmRueWRsWmZZLUkifQ.eyJvcmlnaW4iOiJodHRwczovL291dGxvb2sub2ZmaWNlMzY1LmNvbSIsInVjIjoiYmEyZDBmOWRjOTY4NDEwZjk5YjczMWY4ODA4NjFjMGIiLCJzaWduaW5fc3RhdGUiOiJbXCJrbXNpXCJdIiwidmVyIjoiRXhjaGFuZ2UuQ2FsbGJhY2suVjEiLCJhcHBjdHhzZW5kZXIiOiJPd2FEb3dubG9hZEA0ZmQyMjRkNi0wOTQyLTQ1NTgtOTc2NS1kYmI0YTRmMzAzNjkiLCJpc3NyaW5nIjoiV1ciLCJhcHBjdHgiOiJ7XCJtc2V4Y2hwcm90XCI6XCJvd2FcIixcInByaW1hcnlzaWRcIjpcIlMtMS01LTIxLTQ1ODM2NzAyNS0yMDY0NTgxMTE1LTI5NTAxNzkwNzUtMzIyNjYxNDdcIixcInB1aWRcIjpcIjExNTM4MDExMTc2NTMxNDE1NTZcIixcIm9pZFwiOlwiMTRhZWViMTItMWJlNS00OGQ4LThhNjgtODE1ZWIwNzgyZGQ2XCIsXCJzY29wZVwiOlwiT3dhRG93bmxvYWRcIn0iLCJuYmYiOjE2MDYzMzM1OTUsImV4cCI6MTYwNjMzNDE5NSwiaXNzIjoiMDAwMDAwMDItMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwQDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImF1ZCI6IjAwMDAwMDAyLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9hdHRhY2htZW50cy5vZmZpY2UubmV0QDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImhhcHAiOiJvd2EifQ.D6zpM28D2LvUt6vEs9tlromfdvwq2UX1pkQMWAgjmCHzpAerMI54gSbgrpPDd9fsXl-klHzrwt6_rUAStXSn3QyaIB4vnXxkz_Th6EDi0rGMCEuNGvm_wXWbN7s3yRPOkeySkcTOL9pqEkBkl2qdifi7W0o9pmehZKWyOEjp454UHqELQhqmGegbJ3ZWje9nfLgpaBtaxJ5v8jHxbH6V8BqO-cg_Oe_7UmOQ-Qy_bUfkZSXKyZa6QLthD5ATl4693yAT4jggB3u-xMAgAcPcFyGTusd3oyR7TIMX2Fk1oBNvi3QNGvK6LD14hZJhsA4SKsjCa2CUT5rkg3kZtnhSSw&X-OWA-CANARY=5Cf0qnwV6E6xzEHxKubb4aCJvTB7kdgYNiU0ScQUidUVaT0PSyh6PJh695YRhEMf6qklCFgzyWI.&owa=outlook.office365.com&scriptVer=20201116002.04&animation=true"))
 
 # ╔═╡ bbd22660-2ea7-11eb-16f0-77f6310a9d42
@@ -158,6 +161,10 @@ end
 
 # ╔═╡ b053b0b0-2e9d-11eb-07cd-8d114ddb5e3e
 # This displays two images next to each other, with a white gap between them.
+
+# If this does not work, just turn the RGBX into RGB. If it is already RGB, turn it 
+# into RGBX. It should work after doing that. Remember to run the cells again after 
+# changing this cell.
 
 function hbox(x, y, gap=16; sy=size(y), sx=size(x))
 	w,h = (max(sx[1], sy[1]),
