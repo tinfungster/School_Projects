@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.7
+# v0.12.9
 
 using Markdown
 using InteractiveUtils
@@ -11,6 +11,7 @@ begin
 	using Images
 	using PlutoUI
 	using ImageFiltering
+	using ImageMagick
 	
 	using Statistics
 	using LinearAlgebra
@@ -87,7 +88,7 @@ end
 md"# This is how my program helped me to do my art homework. "
 
 # ╔═╡ 00078100-2ea7-11eb-12a0-f740602188b6
-load(download("https://attachments.office.net/owa/6200%40tiffin.kingston.sch.uk/service.svc/s/GetAttachmentThumbnail?id=AAMkADNmNzM2YjFiLTgxMGMtNDRmMi1hODU4LTllYWRhMjMwZmQ4YwBGAAAAAACQxg3NrCc6RJ2LB7kVaMdwBwDF76DFm02%2FRp2ygnW7iB7CAAAAAAEMAADF76DFm02%2FRp2ygnW7iB7CAAAx7MhYAAABEgAQAMFXn%2FsYDG5Dmexpmh%2F9j0E%3D&thumbnailType=2&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2MzU4ODUyMzRCOTI1MkRERTAwNTc2NkQ5RDlGMjc2NTY1RjYzRTIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJWaldJVWpTNUpTM2VBRmRtMmRueWRsWmZZLUkifQ.eyJvcmlnaW4iOiJodHRwczovL291dGxvb2sub2ZmaWNlMzY1LmNvbSIsInVjIjoiNjM3MDA4MTJkYzgyNGM4N2IxZjk3MDJlNDFmM2I2NzAiLCJzaWduaW5fc3RhdGUiOiJbXCJrbXNpXCJdIiwidmVyIjoiRXhjaGFuZ2UuQ2FsbGJhY2suVjEiLCJhcHBjdHhzZW5kZXIiOiJPd2FEb3dubG9hZEA0ZmQyMjRkNi0wOTQyLTQ1NTgtOTc2NS1kYmI0YTRmMzAzNjkiLCJpc3NyaW5nIjoiV1ciLCJhcHBjdHgiOiJ7XCJtc2V4Y2hwcm90XCI6XCJvd2FcIixcInByaW1hcnlzaWRcIjpcIlMtMS01LTIxLTQ1ODM2NzAyNS0yMDY0NTgxMTE1LTI5NTAxNzkwNzUtMzIyNjYxNDdcIixcInB1aWRcIjpcIjExNTM4MDExMTc2NTMxNDE1NTZcIixcIm9pZFwiOlwiMTRhZWViMTItMWJlNS00OGQ4LThhNjgtODE1ZWIwNzgyZGQ2XCIsXCJzY29wZVwiOlwiT3dhRG93bmxvYWRcIn0iLCJuYmYiOjE2MDYyNTgwOTIsImV4cCI6MTYwNjI1ODY5MiwiaXNzIjoiMDAwMDAwMDItMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwQDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImF1ZCI6IjAwMDAwMDAyLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9hdHRhY2htZW50cy5vZmZpY2UubmV0QDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImhhcHAiOiJvd2EifQ.XmKZQuM31E4GwU-SjuxN9wC5TkviwCZs91AVWjDzAVR_P2J0i0AQ1pQzkWWP-YddD1IUdQgLA0tL538uLT01sOhidloFbBpP8tdiMmziYWQT_RdPYrz0MWtVmbx3Pb-IZOM_5sGUOQ8fgXhwa5uhDwWd1vSUQtcdSip9mALEODmyxWmP8lUn-1H6Sr4z4uZJuIMRRd1Dyy-L8LEmGCd6WB7f53ssOxnTIfAZrC70WjWCGcgMPUc-fMhRJEEermpsq-8V5m-j9kO8zP1p80Sf5mgDXe00nNVpjyiAouUiy3mZRdG-BiW-Tir_3hn3jkB_7COQHCy3s6rnQ9_pTk0UDw&X-OWA-CANARY=nqyakUol2U-zZ3LhNQI9XRBarSLLkNgYkGC4w319OhepvDhK1VfzxjhHvM4tOhKA_KWCd07GWSA.&owa=outlook.office365.com&scriptVer=20201116002.04&animation=true"))
+load(download("https://attachments.office.net/owa/6200%40tiffin.kingston.sch.uk/service.svc/s/GetAttachmentThumbnail?id=AAMkADNmNzM2YjFiLTgxMGMtNDRmMi1hODU4LTllYWRhMjMwZmQ4YwBGAAAAAACQxg3NrCc6RJ2LB7kVaMdwBwDF76DFm02%2FRp2ygnW7iB7CAAAAAAEMAADF76DFm02%2FRp2ygnW7iB7CAAAx7MhYAAABEgAQAMFXn%2FsYDG5Dmexpmh%2F9j0E%3D&thumbnailType=2&token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2MzU4ODUyMzRCOTI1MkRERTAwNTc2NkQ5RDlGMjc2NTY1RjYzRTIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJWaldJVWpTNUpTM2VBRmRtMmRueWRsWmZZLUkifQ.eyJvcmlnaW4iOiJodHRwczovL291dGxvb2sub2ZmaWNlMzY1LmNvbSIsInVjIjoiYmEyZDBmOWRjOTY4NDEwZjk5YjczMWY4ODA4NjFjMGIiLCJzaWduaW5fc3RhdGUiOiJbXCJrbXNpXCJdIiwidmVyIjoiRXhjaGFuZ2UuQ2FsbGJhY2suVjEiLCJhcHBjdHhzZW5kZXIiOiJPd2FEb3dubG9hZEA0ZmQyMjRkNi0wOTQyLTQ1NTgtOTc2NS1kYmI0YTRmMzAzNjkiLCJpc3NyaW5nIjoiV1ciLCJhcHBjdHgiOiJ7XCJtc2V4Y2hwcm90XCI6XCJvd2FcIixcInByaW1hcnlzaWRcIjpcIlMtMS01LTIxLTQ1ODM2NzAyNS0yMDY0NTgxMTE1LTI5NTAxNzkwNzUtMzIyNjYxNDdcIixcInB1aWRcIjpcIjExNTM4MDExMTc2NTMxNDE1NTZcIixcIm9pZFwiOlwiMTRhZWViMTItMWJlNS00OGQ4LThhNjgtODE1ZWIwNzgyZGQ2XCIsXCJzY29wZVwiOlwiT3dhRG93bmxvYWRcIn0iLCJuYmYiOjE2MDYzMzM1OTUsImV4cCI6MTYwNjMzNDE5NSwiaXNzIjoiMDAwMDAwMDItMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwQDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImF1ZCI6IjAwMDAwMDAyLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9hdHRhY2htZW50cy5vZmZpY2UubmV0QDRmZDIyNGQ2LTA5NDItNDU1OC05NzY1LWRiYjRhNGYzMDM2OSIsImhhcHAiOiJvd2EifQ.D6zpM28D2LvUt6vEs9tlromfdvwq2UX1pkQMWAgjmCHzpAerMI54gSbgrpPDd9fsXl-klHzrwt6_rUAStXSn3QyaIB4vnXxkz_Th6EDi0rGMCEuNGvm_wXWbN7s3yRPOkeySkcTOL9pqEkBkl2qdifi7W0o9pmehZKWyOEjp454UHqELQhqmGegbJ3ZWje9nfLgpaBtaxJ5v8jHxbH6V8BqO-cg_Oe_7UmOQ-Qy_bUfkZSXKyZa6QLthD5ATl4693yAT4jggB3u-xMAgAcPcFyGTusd3oyR7TIMX2Fk1oBNvi3QNGvK6LD14hZJhsA4SKsjCa2CUT5rkg3kZtnhSSw&X-OWA-CANARY=5Cf0qnwV6E6xzEHxKubb4aCJvTB7kdgYNiU0ScQUidUVaT0PSyh6PJh695YRhEMf6qklCFgzyWI.&owa=outlook.office365.com&scriptVer=20201116002.04&animation=true"))
 
 # ╔═╡ bbd22660-2ea7-11eb-16f0-77f6310a9d42
 md"# Thank you!"
@@ -99,6 +100,8 @@ md"# The Code"
 brightness(c::AbstractRGB) = 0.3 * c.r + 0.59 * c.g + 0.11 * c.b
 
 # ╔═╡ 5fa1ecd0-2e9e-11eb-323c-df0e31d68a63
+# Convolve means that you are doing something to an image.
+
 function convolve(M, kernel)
     height, width = size(kernel)
     
@@ -141,6 +144,8 @@ function convolve(M, kernel)
 end
 
 # ╔═╡ d8d84f50-2e9d-11eb-161d-2dd27090d9e3
+# The edge detection software is based on the sobel filter.
+
 function edgeness(img)
 	Sy, Sx = Kernel.sobel()
 	b = brightness.(img)
@@ -152,13 +157,15 @@ function edgeness(img)
 end
 
 # ╔═╡ b053b0b0-2e9d-11eb-07cd-8d114ddb5e3e
+# This displays two images next to each other, with a white gap between them.
+
 function hbox(x, y, gap=16; sy=size(y), sx=size(x))
 	w,h = (max(sx[1], sy[1]),
 		   gap + sx[2] + sy[2])
 	
-	slate = fill(RGB(1,1,1), w,h)
-	slate[1:size(x,1), 1:size(x,2)] .= RGB.(x)
-	slate[1:size(y,1), size(x,2) + gap .+ (1:size(y,2))] .= RGB.(y)
+	slate = fill(RGBX(1,1,1), w,h)
+	slate[1:size(x,1), 1:size(x,2)] .= RGBX.(x)
+	slate[1:size(y,1), size(x,2) + gap .+ (1:size(y,2))] .= RGBX.(y)
 	slate
 end
 
@@ -169,6 +176,9 @@ md"# Appendix"
 md"### My code is all based on the Image Processing course at MIT. The course is called MIT 18.S191. 
 
 ##### https://github.com/mitmath/18S191 "
+
+# ╔═╡ c0d0d8e0-2f57-11eb-2856-df5d9f263754
+md"### The painting that we drew was a portion of Temple Garden, painted by Paul Klee. "
 
 # ╔═╡ b07e86b0-2e9c-11eb-2514-0b669595fc9b
 Image = load(download("https://pbs.twimg.com/media/Djrp2IrX0AERWEG.jpg"))
@@ -199,8 +209,23 @@ end
 
 edgeness(Paul_Klee) / maximum(abs.(edges))
 
+# ╔═╡ d50844bc-2f55-11eb-1c47-f7f686b73e84
+Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges))
+
 # ╔═╡ 6c6b55e0-2ea4-11eb-2219-f70459970b0a
 hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(edgeness(Paul_Klee)))
+
+# ╔═╡ e588ae60-2f57-11eb-29e4-dde4d621e5be
+md"### Importing the packages into the notebook."
+
+# ╔═╡ 3e5a22c6-2f53-11eb-3626-9b90b558feb6
+begin
+	import Pkg
+	Pkg.activate(mktempdir())
+end
+
+# ╔═╡ 8dabb7f4-2f53-11eb-3ee3-d1b581b34044
+Pkg.add(["Images", "PlutoUI", "ImageFiltering", "ImageMagick"])
 
 # ╔═╡ Cell order:
 # ╠═2e088be0-2e9c-11eb-05d8-4dc23076cc29
@@ -221,6 +246,7 @@ hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(edgeness(Paul_Kle
 # ╟─e064bc90-2ea2-11eb-35bf-894d91e393b4
 # ╠═7badcee0-2ea2-11eb-0c93-152492d79652
 # ╟─3a733db0-2ea3-11eb-0791-6150343f3c50
+# ╠═d50844bc-2f55-11eb-1c47-f7f686b73e84
 # ╠═f5ce6720-2e9d-11eb-3677-1b0023dc3531
 # ╟─454cafe0-2ea4-11eb-1e18-f32a5359cfd5
 # ╠═0ec9a670-2ea5-11eb-38cc-15439ad8dc94
@@ -236,5 +262,9 @@ hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(edgeness(Paul_Kle
 # ╟─41aaf1ae-2e9c-11eb-1319-259426bd75a7
 # ╟─50481810-2e9c-11eb-16fd-8bef3d1ab1df
 # ╠═ae20dd10-2e9b-11eb-00a4-af2a633ff1bd
+# ╟─c0d0d8e0-2f57-11eb-2856-df5d9f263754
 # ╠═b07e86b0-2e9c-11eb-2514-0b669595fc9b
 # ╠═f5ac2e90-2e9c-11eb-01c3-d5bf5b1660cc
+# ╟─e588ae60-2f57-11eb-29e4-dde4d621e5be
+# ╠═3e5a22c6-2f53-11eb-3626-9b90b558feb6
+# ╠═8dabb7f4-2f53-11eb-3ee3-d1b581b34044
