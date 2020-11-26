@@ -80,7 +80,7 @@ md"## I would rather to have a white background with black lines, so it would lo
 # White is the opposite of black.
 
 function sketch(X)
-	f(x) = RGB(1-x,1-x,1-x)
+	f(x) = RGBX(1-x,1-x,1-x)
 	map(f, X ./ maximum(X))
 end
 
@@ -162,10 +162,6 @@ end
 # ╔═╡ b053b0b0-2e9d-11eb-07cd-8d114ddb5e3e
 # This displays two images next to each other, with a white gap between them.
 
-# If this does not work, just turn the RGBX into RGB. If it is already RGB, turn it 
-# into RGBX. It should work after doing that. Remember to run the cells again after 
-# changing this cell.
-
 function hbox(x, y, gap=16; sy=size(y), sx=size(x))
 	w,h = (max(sx[1], sy[1]),
 		   gap + sx[2] + sy[2])
@@ -220,7 +216,7 @@ edgeness(Paul_Klee) / maximum(abs.(edges))
 Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges))
 
 # ╔═╡ 6c6b55e0-2ea4-11eb-2219-f70459970b0a
-hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(edgeness(Paul_Klee)))
+hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges))))
 
 # ╔═╡ e588ae60-2f57-11eb-29e4-dde4d621e5be
 md"### Importing the packages into the notebook."
@@ -265,7 +261,7 @@ Pkg.add(["Images", "PlutoUI", "ImageFiltering", "ImageMagick"])
 # ╟─3e34cbd0-2e9e-11eb-2664-f3a8bec1d5a5
 # ╟─5fa1ecd0-2e9e-11eb-323c-df0e31d68a63
 # ╟─d8d84f50-2e9d-11eb-161d-2dd27090d9e3
-# ╟─b053b0b0-2e9d-11eb-07cd-8d114ddb5e3e
+# ╠═b053b0b0-2e9d-11eb-07cd-8d114ddb5e3e
 # ╟─41aaf1ae-2e9c-11eb-1319-259426bd75a7
 # ╟─50481810-2e9c-11eb-16fd-8bef3d1ab1df
 # ╠═ae20dd10-2e9b-11eb-00a4-af2a633ff1bd
