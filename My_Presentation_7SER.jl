@@ -79,6 +79,8 @@ md"## I would rather to have a white background with black lines, so it would lo
 # ╔═╡ 0ec9a670-2ea5-11eb-38cc-15439ad8dc94
 # White is the opposite of black.
 
+# If this does not work (only if it does not work), turn all references to RGBX in hbox (unhide the code) and the code under this comment to RGB. It should solve the problem after doing this; remember to run the changed cells and the cells with the error again. 
+
 function sketch(X)
 	f(x) = RGBX(1-x,1-x,1-x)
 	map(f, X ./ maximum(X))
