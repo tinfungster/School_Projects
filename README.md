@@ -1,3 +1,3 @@
-# My Presentation
+# Disclaimer
 
-### My presentation is called My_Presentation_7SER.jl .
+### My code is based on other people's code, but I did modify them a lot.
