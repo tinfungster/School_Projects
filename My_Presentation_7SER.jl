@@ -220,18 +220,6 @@ Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges))
 # ╔═╡ 6c6b55e0-2ea4-11eb-2219-f70459970b0a
 hbox(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges)), sketch(Gray.(edgeness(Paul_Klee)) / maximum(abs.(edges))))
 
-# ╔═╡ e588ae60-2f57-11eb-29e4-dde4d621e5be
-md"### Importing the packages into the notebook."
-
-# ╔═╡ 3e5a22c6-2f53-11eb-3626-9b90b558feb6
-begin
-	import Pkg
-	Pkg.activate(mktempdir())
-end
-
-# ╔═╡ 8dabb7f4-2f53-11eb-3ee3-d1b581b34044
-Pkg.add(["Images", "PlutoUI", "ImageFiltering", "ImageMagick"])
-
 # ╔═╡ Cell order:
 # ╠═2e088be0-2e9c-11eb-05d8-4dc23076cc29
 # ╟─6d967e80-2e9b-11eb-15bb-a5cc9d107ad4
